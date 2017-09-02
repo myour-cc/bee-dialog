@@ -1,13 +1,36 @@
-html
-    height: 100%
-body
-    min-height: 100%
-    background-color: #fff
-
-header
-    height: 120px
-    background-color: rgba(0,0,0,.6)
-footer
-    height: 120px
-    color: #fff
-    background-color: rgba(0,0,0,.9)
+.bee
+  font-size: 12px
+  font-family "PingFang SC", "Avenir", "Helvetica Neue", Helvetica, Arial, "Microsoft Yahei", "Hiragino Sans GB", "Heiti SC", "WenQuanYi Micro Hei", sans-serif
+  font-weight: normal
+  -webkit-text-size-adjust: none
+  a
+    text-decoration none
+.bee.mask
+  position fixed
+  top 0
+  left 0
+  width 100%
+  height 100%
+  background-color rgba(0,0,0,.6)
+.bee.dialog
+  position fixed
+  top 50%
+  left 50%
+  width 80%
+  max-width 300px
+  transform translate(-50%,-50%)
+  background-color #fff
+  .bee.dialog-hd
+    padding 1em 1.6em 0
+    text-align center
+  .bee.dialog-bd
+    padding .6em 1.6em
+  .bee.dialog-ft
+    display flex
+    line-height 2.6
+    border-top 1px solid rgba(0,0,0,.2)
+    a
+      flex 1
+      text-align center
+      &:not(:last-child)
+        border-right 1px solid rgba(0,0,0,.2)
