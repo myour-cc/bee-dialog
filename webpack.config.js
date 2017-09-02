@@ -1,69 +1,89 @@
-const path = require('path')
-const webpack = require('webpack')
-const HtmlWebpackPlugin = require('html-webpack-plugin')
+const webpack = require('webpack');
+const path = require('path');
+const ExtractTextPlugin = require("extract-text-webpack-plugin");
 
 module.exports = {
-  entry: ['babel-polyfill', './src/main.js'],
+  entry: {
+    main: './app/main.js'
+  },
   output: {
-    filename: 'bundle.js',
-    path: path.resolve(__dirname, 'dist')
+    path: path.resolve(__dirname, 'dist/static'),
+    filename: 'js/[name].js'
   },
-  devtool: 'inline-source-map',
-  devServer: {
-    contentBase: './dist',
-    hot: true
-  },
-  plugins: [
-    new webpack.HotModuleReplacementPlugin(),
-    // new webpack.optimize.UglifyJsPlugin({
-    //   compress: {
-    //     warnings: false
-    //   }
-    // }),
-    new HtmlWebpackPlugin({
-      filename: 'index.html',
-      template: 'index.html',
-      inject: true
-    })
-  ],
   module: {
-    rules: [{
-      test: /\.hbs$/,
-      use: [
-        'handlebars-loader'
-      ]
-    }, {
-        test: /\.js$/,
-        exclude: /node_modules/,
-        use: [
-          'babel-loader',
-          // 'eslint-loader',
-        ],
-      }, {
+    rules: [ {
+      test: /\.js$/,
+      exclude: /(node_modules|bower_components)/,
+      use: {
+        loader: 'babel-loader',
+        options: {
+          presets: ['env']
+        }
+      }
+    },
+      {
         test: /\.css$/,
-        use: [
-          'style-loader',
-          'css-loader'
-        ]
-      }, {
-        test: /\.styl$/,
-        use: [
-          'style-loader',
-          'css-loader',
-          'stylus-loader'
-        ],
-      }, {
-        test: /\.(png|svg|jpg|gif)$/,
-        use: [
-          'file-loader'
-        ]
+        use: ExtractTextPlugin.extract({
+          fallback: "style-loader",
+          use: [{
+            loader: 'css-loader',
+            options: {
+              minimize: true
+            }
+          },
+            "postcss-loader"
+          ]
+        })
       },
       {
-        test: /\.(woff|woff2|eot|ttf|otf)$/,
-        use: [
-          'file-loader'
-        ]
+        test: /\.styl$/,
+        use: ExtractTextPlugin.extract({
+          fallback: "style-loader",
+          use: [{
+            loader: 'css-loader',
+            options: {
+              minimize: true
+            }
+          },
+            "postcss-loader",
+            'stylus-loader'
+          ]
+        })
+      },
+      {
+        test: /\.(svg|jpe?g|png|gif)$/,
+        use: [{
+          loader: 'url-loader',
+          options: {
+            limit: 50000,
+            name: 'image/[hash].[ext]'
+          }
+        }]
+      },
+      {
+        test: /\.(ttf|eot|woff|woff2)$/,
+        use: [{
+          loader: 'url-loader',
+          options: {
+            limit: 50000
+          }
+        }]
       }
     ]
-  }
+  },
+  plugins: [
+    new ExtractTextPlugin({
+      filename: 'css/[name].css'
+    }),
+    new webpack.optimize.UglifyJsPlugin({
+      compress: {
+        warnings: false
+      }
+    })
+    // new webpack.BannerPlugin(`
+    //     Author  :   DasonCheng
+    //     Email   :   dasoncheng@outlook.com
+    //     Site    :   myour.cc
+    //   `)
+  ]
 };
