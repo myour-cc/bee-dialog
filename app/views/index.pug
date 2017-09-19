@@ -2,4 +2,15 @@ extends ./layout/main.pug
 block title
   title Home
 block content
-  include ./component/dialog.pug
+  button as
+  script.
+    document.querySelector('button').onclick = () => {
+      Dialog({
+          title: '重要操作',
+          text: '确定要删除此页面吗？',
+          buttons:['OK']
+        })
+        .then(action => {
+          console.log(action)
+        })
+    }

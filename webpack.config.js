@@ -1,54 +1,41 @@
 const webpack = require('webpack');
 const path = require('path');
-const ExtractTextPlugin = require("extract-text-webpack-plugin");
 
 module.exports = {
   entry: {
-    main: './app/main.js'
+    dialog: './app/main.js'
   },
   output: {
-    path: path.resolve(__dirname, 'dist/static'),
-    filename: 'js/[name].js'
+    path: path.resolve(__dirname, 'dist/'),
+    filename: '[name].js'
   },
   module: {
-    rules: [ {
-      test: /\.js$/,
-      exclude: /(node_modules|bower_components)/,
-      use: {
-        loader: 'babel-loader',
-        options: {
-          presets: ['env']
+    rules: [{
+        test: /\.js$/,
+        exclude: /(node_modules|bower_components)/,
+        use: {
+          loader: 'babel-loader',
+          options: {
+            presets: ['env']
+          }
         }
-      }
-    },
+      },
       {
         test: /\.css$/,
-        use: ExtractTextPlugin.extract({
-          fallback: "style-loader",
-          use: [{
-            loader: 'css-loader',
-            options: {
-              minimize: true
-            }
-          },
-            "postcss-loader"
-          ]
-        })
+        use: [
+          'style-loader',
+          'css-loader',
+          "postcss-loader"
+        ]
       },
       {
         test: /\.styl$/,
-        use: ExtractTextPlugin.extract({
-          fallback: "style-loader",
-          use: [{
-            loader: 'css-loader',
-            options: {
-              minimize: true
-            }
-          },
-            "postcss-loader",
-            'stylus-loader'
-          ]
-        })
+        use: [
+          'style-loader',
+          'css-loader',
+          "postcss-loader",
+          'stylus-loader'
+        ]
       },
       {
         test: /\.(svg|jpe?g|png|gif)$/,
@@ -58,6 +45,12 @@ module.exports = {
             limit: 50000,
             name: 'image/[hash].[ext]'
           }
+        }]
+      },
+      {
+        test: /\.pug$/,
+        use: [{
+          loader: 'pug-loader'
         }]
       },
       {
@@ -72,18 +65,15 @@ module.exports = {
     ]
   },
   plugins: [
-    new ExtractTextPlugin({
-      filename: 'css/[name].css'
-    }),
     new webpack.optimize.UglifyJsPlugin({
       compress: {
         warnings: false
       }
-    })
-    // new webpack.BannerPlugin(`
-    //     Author  :   DasonCheng
-    //     Email   :   dasoncheng@outlook.com
-    //     Site    :   myour.cc
-    //   `)
+    }),
+    new webpack.BannerPlugin(`
+        Author  :   DasonCheng
+        Email   :   dasoncheng@outlook.com
+        Site    :   myour.cc
+      `)
   ]
 };

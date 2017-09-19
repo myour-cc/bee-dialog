@@ -1,21 +1,8 @@
 {
-  "name": "dialog",
-  "description": "html静态页面模板化",
+  "name": "bee-dialog",
   "version": "0.0.1",
+  "description": "dialog",
   "main": "dist/dialog.js",
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/beeui/dialog.git"
-  },
-  "keywords": [
-    "dialog"
-  ],
-  "author": "dasoncheng",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/beeui/dialog/issues"
-  },
-  "homepage": "https://github.com/beeui/dialog#readme",
   "scripts": {
     "build": "rm -rf dist && gulp pug && webpack --progress --color"
   },
@@ -26,7 +13,6 @@
     "babel-plugin-transform-runtime": "^6.23.0",
     "babel-preset-env": "^1.6.0",
     "css-loader": "^0.28.5",
-    "extract-text-webpack-plugin": "^3.0.0",
     "file-loader": "^0.11.2",
     "gulp": "^3.9.1",
     "gulp-livereload": "^3.8.1",
@@ -40,5 +26,18 @@
     "url-loader": "^0.5.9",
     "webpack": "^3.5.5",
     "webpack-stream": "^4.0.0"
-  }
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/myour-cc/bee-dialog.git"
+  },
+  "keywords": [
+    "dialog"
+  ],
+  "author": "dasoncheng",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/myour-cc/bee-dialog/issues"
+  },
+  "homepage": "https://github.com/myour-cc/bee-dialog#readme"
 }

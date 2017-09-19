@@ -1,8 +1,7 @@
-.bee.mask
 .bee.dialog
   .bee.dialog-hd
-    strong 提示
-  .bee.dialog-bd 确定执行此操作？确定执行此操作？确定执行此操作？确定执行此操作？确定执行此操作？
+    strong #{title}
+  .bee.dialog-bd #{text}
   .bee.dialog-ft
-    a(href="javascript:void(0)") 取消
-    a(href="javascript:void(0)") 确认
+    each name in buttons
+      a.bee.dialog-buttom(href="javascript:void(0)") #{name}
