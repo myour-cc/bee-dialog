@@ -13,8 +13,7 @@
       document.querySelector('button').onclick = () => {
         Dialog({
             title: '重要操作',
-            text: '确定要删除此页面吗？',
-            buttons:['OK']
+            text: '确定要删除此页面吗？'
           })
           .then(action => {
             console.log(action)
