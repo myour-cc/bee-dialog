@@ -1,15 +1,19 @@
-extends ./layout/main.pug
-block title
-  title Home
-block content
-  button as
-  script.
-    document.querySelector('button').onclick = () => {
-      Dialog({
+doctype html
+html
+  head
+    meta(charset='UTF-8')
+    meta(name='viewport', content='width=device-width, initial-scale=1.0')
+    meta(http-equiv='X-UA-Compatible', content='ie=edge')
+    title bee-dialog
+  body
+    button delete
+    script(src="bee-dialog.js")
+    script.
+      document.querySelector('button').onclick = () => {
+        BeeDialog({
           title: '重要操作',
           text: '确定要删除此页面吗？'
-        })
-        .then(action => {
+        }).then(action => {
           console.log(action)
         })
-    }
+      }

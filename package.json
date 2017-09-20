@@ -1,8 +1,8 @@
 {
   "name": "bee-dialog",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "dialog",
-  "main": "dist/dialog.js",
+  "main": "dist/bee-dialog.js",
   "scripts": {
     "build": "rm -rf dist && gulp pug && webpack --progress --color"
   },
@@ -20,6 +20,7 @@
     "gulp-pug": "^3.3.0",
     "gulp-webserver": "^0.9.1",
     "postcss-loader": "^2.0.6",
+    "pug-loader": "^2.3.0",
     "style-loader": "^0.18.2",
     "stylus": "^0.54.5",
     "stylus-loader": "^3.0.1",

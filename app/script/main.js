@@ -1,6 +1,6 @@
 import template from '../views/component/dialog.pug'
 
-let Dialog = (options) => {
+let BeeDialog = (options) => {
   let config = {
     el: document.createElement('div')
   }
@@ -21,4 +21,4 @@ let Dialog = (options) => {
     })
   })
 }
-window.Dialog = Dialog
+window.BeeDialog = BeeDialog
