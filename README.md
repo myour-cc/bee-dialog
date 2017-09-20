@@ -3,13 +3,21 @@
 
 ### 引入
 - npm
-```
+
+```bash
 npm install bee-dialog
+# or
+cnpm install bee-dialog
+# or
+yarn add bee-dialog
 ```
+
 ```javascript
 import 'bee-dialog'
 ```
+
 - script
+
 ```html
 <script src="https://unpkg.com/bee-dialog"></script>
 ```
@@ -50,4 +58,4 @@ BeeDialog({
 [example](https://codepen.io/dasoncheng/pen/JrXqvR)
 
 ### 更多
-需要添加功能或者存在 `bug` 请提交 `issues`，在空余时间会尽快处理。
+需要添加功能或者存在 `bug` 请提交 [`issues`](https://github.com/myour-cc/bee-dialog/issues)，在空余时间会尽快处理。
